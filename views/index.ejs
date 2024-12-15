@@ -3,34 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Teaching Schedule</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css">
+  <title>Teaching Calendar</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css">
   <link rel="stylesheet" href="/styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-  <script defer src="/script.js"></script>
 </head>
 <body>
-  <button onclick="window.location.href='/students/list'">Students List</button>
-  <h1>Welcome to My Teaching Schedule!</h1>
+  <h1>Teaching Calendar</h1>
 
-  <section id="lesson-booking">
+  <button id="students-list-button">Student List</button>
+
+  <!-- Edit Lesson Bar -->
+  <section id="edit-lesson-bar">
     <h2>Book a Lesson</h2>
-    <form id="book-lesson-form">
-      <input type="text" name="title" placeholder="Lesson Title" required />
-      <input type="datetime-local" name="start" required />
-      <input type="datetime-local" name="end" required />
+    <form id="add-lesson-form">
+      <input type="text" name="title" placeholder="Lesson Title" required>
+      <input type="datetime-local" name="start" required>
+      <input type="datetime-local" name="end" required>
       <select name="studentId" required>
         <% students.forEach(student => { %>
           <option value="<%= student.id %>"><%= student.name %></option>
         <% }); %>
       </select>
-      <button type="submit">Book Lesson</button>
+      <select name="recurrence">
+        <option value="none">No Recurrence</option>
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+      </select>
+      <button type="submit">Add Lesson</button>
     </form>
   </section>
 
+  <!-- Calendar Section -->
   <section id="calendar-section">
     <h2>Lesson Calendar</h2>
     <div id="calendar"></div>
   </section>
+
+  <!-- Modal for editing/deleting lessons -->
+  <div id="lesson-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-modal-btn">&times;</span>
+      <h2>Edit Lesson</h2>
+      <form id="edit-lesson-form">
+        <input type="text" name="title" placeholder="Lesson Title" required>
+        <input type="datetime-local" name="start" required>
+        <input type="datetime-local" name="end" required>
+        <select name="studentId" required>
+          <% students.forEach(student => { %>
+            <option value="<%= student.id %>"><%= student.name %></option>
+          <% }); %>
+        </select>
+        <select name="recurrence">
+          <option value="none">No Recurrence</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+        </select>
+        <button type="submit">Update Lesson</button>
+        <button type="button" id="delete-lesson-btn">Delete Lesson</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>
