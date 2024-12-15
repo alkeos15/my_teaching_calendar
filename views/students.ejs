@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students List</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/script.js"></script>
+</head>
+<body>
+  <button onclick="window.location.href='/'">Home</button>
+  <h1>Students List</h1>
+
+  <section id="add-student">
+    <h2>Add a Student</h2>
+    <form id="add-student-form">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="text" name="phone" placeholder="Phone" required />
+      <select name="languageLevel" required>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+      <button type="submit">Add Student</button>
+    </form>
+  </section>
+
+  <section id="student-list-section">
+    <h2>Student List</h2>
+    <ul id="student-list">
+      <% students.forEach(student => { %>
+        <li>
+          <span><%= student.name %> (<%= student.languageLevel %>)</span>
+          <button class="edit-student" data-id="<%= student.id %>">Edit</button>
+          <button class="delete-student" data-id="<%= student.id %>">Delete</button>
+        </li>
+      <% }); %>
+    </ul>
+  </section>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Teaching Schedule</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script defer src="/script.js"></script>
+</head>
+<body>
+  <button onclick="window.location.href='/students/list'">Students List</button>
+  <h1>Welcome to My Teaching Schedule!</h1>
+
+  <section id="lesson-booking">
+    <h2>Book a Lesson</h2>
+    <form id="book-lesson-form">
+      <input type="text" name="title" placeholder="Lesson Title" required />
+      <input type="datetime-local" name="start" required />
+      <input type="datetime-local" name="end" required />
+      <select name="studentId" required>
+        <% students.forEach(student => { %>
+          <option value="<%= student.id %>"><%= student.name %></option>
+        <% }); %>
+      </select>
+      <button type="submit">Book Lesson</button>
+    </form>
+  </section>
+
+  <section id="calendar-section">
+    <h2>Lesson Calendar</h2>
+    <div id="calendar"></div>
+  </section>
+</body>
+</html>

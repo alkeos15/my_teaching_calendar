@@ -1,0 +1,4 @@
+/* FullCalendar styles */
+@import url('https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.min.css');
+@import url('https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.min.css');
+@import url('https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.min.css');

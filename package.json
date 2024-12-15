@@ -1,0 +1,18 @@
+{
+  "name": "my-teaching-schedule",
+  "version": "1.0.0",
+  "description": "A scheduling app for teachers",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.6",
+    "@fullcalendar/daygrid": "^6.1.6",
+    "@fullcalendar/timegrid": "^6.1.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7"
+  }
+}
